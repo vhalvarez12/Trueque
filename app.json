@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "trueque",
-    "slug": "trueque",
+    "name": "chat",
+    "slug": "chat",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

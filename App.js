@@ -1,23 +1,21 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet,Text, View } from 'react-native';
-import OnboardingScreen from './src/screens/OnboardingScreen';
+import { CometChat } from '@cometchat-pro/react-native-chat'
+import { useEffect } from 'react'
+import AuthNavigation from './other/AuthNavigation'
+import { CONSTANTS } from './firebase-cometchat/CONSTANTS'
 
-export default App = () => {
-  return(
-    <View style={styles.container}>
-      <OnboardingScreen/>
-      <StatusBar style="auto"/>
-    </View>
-   
-  );
-};
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, 
-    backgroundColor:'#fff',
-    alignItems: 'center', 
-    justifyContent: 'center'
-  },
-});
 
+export default function App() {
+const initCometChat = () => {
+let appID = CONSTANTS.APP_ID
+let region = CONSTANTS.REGION
+let appSetting = new CometChat.AppSettingsBuilder()
+.subscribePresenceForAllUsers()
+.setRegion(region)
+.build()
+CometChat.init(appID, appSetting)
+.then(() => console.log('Initialization completed successfully'))
+.catch((error) => console.log('Initialization failed with error:', error))
+}
+useEffect(() => initCometChat(), [])
+return <AuthNavigation />
+}

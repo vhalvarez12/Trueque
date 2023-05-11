@@ -9,6 +9,9 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+firebase-cometchat\CONSTANTS.js
 
 # macOS
 .DS_Store
+.idea
+.vscode
